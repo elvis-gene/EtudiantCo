@@ -1,0 +1,81 @@
+{% extends 'website/base.html' %}
+
+{% block title %}Enregistrement{% endblock %}
+{% block content %}
+
+<div class="container w-75 pt-4 pb-3 text-justify">
+    <!-- <p>{{message}}</p> -->
+    <p>Nous, etudiants congolais en Afrique du Sud, faisons face à un chalenge quand il s'agit de renouveler
+      nos passeports. Nous sommes obligés de repartir au pays pour le faire et cela pose un
+      vrai probleme pour plusieurs raisons. C'est pour cela que l'association des etudiants congolais en afrique
+      du Sud qui se chargent de plusieurs affaires nous concernant s'etaient plaints auprès de l'ambassadeur
+       concernant ce probleme. Et la solution avait été de recenser le nombre d'etudiants
+      comme ça ils pourront decider s'il faudra emmener la machine en afrique du sud...</p>
+
+      <!-- parcequ'on risque souvent de rater des cours ou examens, et meme d'avoir des
+      complications de repartir en Afrique du Sud au cas ou nos visas s'expire pendant que nous attendons
+      nos passeports -->
+</div>
+
+<div class="container w-50">
+
+  <form action="" method="post">
+
+    <div class="row form-group">
+        <div class="col">
+          <label for="inputSurname">Nom</label>
+          <input type="text" class="form-control" id="inputSurname" placeholder="Nom">
+        </div>
+        <div class="col">
+          <label for="inputName">Prenom</label>
+          <input type="text" class="form-control" id="inputName" placeholder="Prenom">
+        </div>
+      </div>
+
+    <div class="form-group">
+      <label for="inputInstitution">Institution:</label>
+      <input type="text" class="form-control" id="inputInstitution" placeholder="Institution">
+    </div>
+
+    <div class="form-group">
+        <label for="inputCity">Ville</label>
+        <input type="text" class="form-control" id="inputCity" placeholder="Ville">
+    </div>
+
+    <div class="form-group">
+        <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
+            <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker4').datetimepicker({
+            'defaultDate', new Date(),
+            format: 'L'
+          });
+        });
+    </script>
+
+   <!-- TODO: Add a required tag -->
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          Confirmation
+        </label>
+      </div>
+    </div>
+    <div class="text-center">
+          <button type="submit" class="btn btn-success btn-sm">S'enregistrer</button>
+    </div>
+
+  </form>
+
+</div>
+
+
+{% endblock %}
