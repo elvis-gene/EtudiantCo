@@ -10,57 +10,67 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="{% static 'form/style.css' %}">
+    <!-- For The Date Picker -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- Font Awesome -->
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-    <!-- Tempus Dominus Bootstrap 4 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css"
-    integrity="sha256-XPTBwC3SBoWHSmKasAk01c08M6sIA5gF5+sRxqak2Qs=" crossorigin="anonymous" />
+    <!-- Local CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'website/style.css' %}">
 
     <title>{% block title %} {% endblock %}</title>
+
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-      <a class="navbar-brand ml-5" href="{% url 'form:home' %}">
-        <img src="{% static 'website/logo.png' %}" width="174" height="50" class="d-inline-block align-top" alt="logo">
-      </a>
-       <!-- width="209" height="60" width="192" height="55"-->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <div id="page-container">
+    <div id="principal">
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto mr-5">
-          <li class="nav-item active px-2">
-            <a class="nav-link" href="{% url 'form:home' %}">Enregistrement<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item px-2">
-            <a class="nav-link" href="{% url 'students_list:get_list' %}">Etudiants</a>
-          </li>
-          <li class="nav-item px-2">
-            <a class="nav-link" href="{% url 'info:news' %}">Nouvelles</a>
-          </li>
-      </div>
-    </nav>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <a class="navbar-brand ml-5" href="{% url 'form:home' %}">
+          <img src="{% static 'website/logo.png' %}" width="174" height="50" class="d-inline-block align-top" alt="logo">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mr-5">
+            <li class="nav-item active px-2">
+              <a class="nav-link" href="{% url 'form:home' %}">Enregistrement<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="{% url 'students_list:get_list' %}">Etudiants</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link" href="{% url 'info:news' %}">Nouvelles</a>
+            </li>
+        </div>
+      </nav>
 
 
-    {% block content %}
-    {% endblock %}
+      {% block content %}
+      {% endblock %}
+
+    </div>
+    </div>
 
 
-    <!-- FOOTER -->
-    <footer style="position: absolute; right: 0; left: 0; bottom: 0;  width: 100%">
-    <nav class="navbar navbar-dark bg-success">
-      <span class="navbar-text mx-auto">
-          © Copyright 2020 | <a href="http://www.elvisgene.tech">Elvis Gene</a>
-      </span>
-    </nav>
-   </footer>
+      <!-- FOOTER -->
+    <div id="pied">
+      <footer>
+      <nav class="navbar navbar-dark bg-success">
+        <span class="navbar-text mx-auto">
+            © Copyright 2020 | EtudiantCo by <a href="http://www.elvisgene.tech">Elvis Gene</a>
+        </span>
+      </nav>
+     </footer>
+    </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -76,13 +86,6 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
-
-
-    <!-- Moment.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"
-    integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"
-    integrity="sha256-z0oKYg6xiLq3yJGsp/LsY9XykbweQlHl42jHv2XTBz4=" crossorigin="anonymous"></script>
 
   </body>
 </html>

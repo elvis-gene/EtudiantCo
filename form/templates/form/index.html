@@ -3,31 +3,26 @@
 {% block title %}Enregistrement{% endblock %}
 {% block content %}
 
-<div class="container w-75 pt-4 pb-3 text-justify">
-    <!-- <p>{{message}}</p> -->
+<div class="container w-75 pt-4 pb-2 text-justify">
     <p>Nous, etudiants congolais en Afrique du Sud, faisons face à un chalenge quand il s'agit de renouveler
       nos passeports. Nous sommes obligés de repartir au pays pour le faire et cela pose un
       vrai probleme pour plusieurs raisons. C'est pour cela que l'association des etudiants congolais en afrique
       du Sud qui se chargent de plusieurs affaires nous concernant s'etaient plaints auprès de l'ambassadeur
        concernant ce probleme. Et la solution avait été de recenser le nombre d'etudiants
       comme ça ils pourront decider s'il faudra emmener la machine en afrique du sud...</p>
-
-      <!-- parcequ'on risque souvent de rater des cours ou examens, et meme d'avoir des
-      complications de repartir en Afrique du Sud au cas ou nos visas s'expire pendant que nous attendons
-      nos passeports -->
 </div>
 
-<div class="container w-50">
+<div class="container w-75">
 
   <form action="" method="post">
 
     <div class="row form-group">
         <div class="col">
-          <label for="inputSurname">Nom</label>
+          <label for="inputSurname">Nom:</label>
           <input type="text" class="form-control" id="inputSurname" placeholder="Nom">
         </div>
         <div class="col">
-          <label for="inputName">Prenom</label>
+          <label for="inputName">Prenom:</label>
           <input type="text" class="form-control" id="inputName" placeholder="Prenom">
         </div>
       </div>
@@ -38,25 +33,21 @@
     </div>
 
     <div class="form-group">
-        <label for="inputCity">Ville</label>
+        <label for="inputCity">Ville:</label>
         <input type="text" class="form-control" id="inputCity" placeholder="Ville">
     </div>
 
     <div class="form-group">
-        <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
-            <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
-                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-            </div>
-        </div>
+          Date D'expiration:
+          <input type="text" class="form-control" id="expirationDate"/>
     </div>
 
-    <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker4').datetimepicker({
-            'defaultDate', new Date(),
-            format: 'L'
-          });
+    <script>
+        var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+        $('#expirationDate').datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'fontawesome',
+            minDate: today,
         });
     </script>
 
@@ -77,5 +68,34 @@
 
 </div>
 
+
+<div class="container w-50 pt-4">
+<button type="button" class="btn btn-outline-success btn-sm btn-block" data-toggle="modal" data-target=".bd-modal-md">Le Savais Tu?</button>
+</div>
+
+<div class="modal bd-modal-md" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Opportunité De Bourse</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-justify"> Nous, etudiants congolais en Afrique du Sud, faisons face à un chalenge quand il s'agit de renouveler
+          nos passeports. Nous sommes obligés de repartir au pays pour le faire et cela pose un
+          vrai probleme pour plusieurs raisons. C'est pour cela que l'association des etudiants congolais en afrique
+          du Sud qui se chargent de plusieurs affaires nous concernant s'etaient plaints auprès de l'ambassadeur
+          concernant ce probleme. Et la solution avait été de recenser le nombre d'etudiants
+          comme ça ils pourront decider s'il faudra emmener la machine en afrique du sud...
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-success btn-sm">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
