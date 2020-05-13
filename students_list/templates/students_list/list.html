@@ -1,0 +1,16 @@
+{% extends 'website/base.html' %}
+{% block title %}Enregistrement{% endblock %}
+
+{% block content %}
+  {% if len(students) != 0 %}
+    {% for student in students %}
+
+    <!-- Bootstrap grid -->
+
+  {% else %}
+    <div class="container w-75 pt-4 text-justify">
+        <p>No students registered</p>
+    </div>
+  {% endif %}
+
+{% endblock %}

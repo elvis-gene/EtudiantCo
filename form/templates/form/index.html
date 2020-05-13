@@ -3,61 +3,115 @@
 {% block title %}Enregistrement{% endblock %}
 {% block content %}
 
+
 <div class="container w-75 pt-4 pb-2 text-justify">
     <p>Nous, etudiants congolais en Afrique du Sud, faisons face à un chalenge quand il s'agit de renouveler
       nos passeports. Nous sommes obligés de repartir au pays pour le faire et cela pose un
-      vrai probleme pour plusieurs raisons. C'est pour cela que l'association des etudiants congolais en afrique
+      vrai problème pour plusieurs raisons. C'est pour cela que l'association des etudiants congolais en afrique
       du Sud qui se chargent de plusieurs affaires nous concernant s'etaient plaints auprès de l'ambassadeur
-       concernant ce probleme. Et la solution avait été de recenser le nombre d'etudiants
-      comme ça ils pourront decider s'il faudra emmener la machine en afrique du sud...</p>
+       concernant ce problème. Et la solution avait été de recenser le nombre d'etudiants
+      comme ça ils pourront décider s'il faudra avoir une machine en afrique du sud...</p>
 </div>
 
 <div class="container w-75">
 
-  <form action="" method="post">
-
+  <form class="needs-validation" action="{% url 'form:process_form' %}" method="post" novalidate>
+  {% csrf_token %}
     <div class="row form-group">
         <div class="col">
           <label for="inputSurname">Nom:</label>
-          <input type="text" class="form-control" id="inputSurname" placeholder="Nom">
+          <input
+                type="text"
+                maxlength="50"
+                class="form-control"
+                id="inputSurname"
+                placeholder="Nom"
+                required>
+          <div class="valid-feedback">
+            Génial!
+          </div>
+          <div class="invalid-feedback">
+            Veuillez entrer votre nom, s'il vous plait.
+          </div>
         </div>
         <div class="col">
           <label for="inputName">Prenom:</label>
-          <input type="text" class="form-control" id="inputName" placeholder="Prenom">
+          <input
+                type="text"
+                maxlength="50"
+                class="form-control"
+                id="inputName"
+                placeholder="Prenom"
+                required>
+          <div class="valid-feedback">
+            Génial!
+          </div>
+          <div class="invalid-feedback">
+            Veuillez entrer votre prenom, s'il vous plait.
+          </div>
         </div>
       </div>
 
     <div class="form-group">
       <label for="inputInstitution">Institution:</label>
-      <input type="text" class="form-control" id="inputInstitution" placeholder="Institution">
+      <input
+            type="text"
+            maxlength="100"
+            class="form-control"
+            id="inputInstitution"
+            placeholder="Institution"
+            required>
+      <div class="valid-feedback">
+        Génial!
+      </div>
+      <div class="invalid-feedback">
+        Veuillez entrer votre institution, s'il vous plait.
+      </div>
     </div>
 
     <div class="form-group">
         <label for="inputCity">Ville:</label>
-        <input type="text" class="form-control" id="inputCity" placeholder="Ville">
+        <input
+              type="text"
+              maxlength="50"
+              class="form-control"
+              id="inputCity"
+              placeholder="Ville"
+              required>
+        <div class="valid-feedback">
+          Génial!
+        </div>
+        <div class="invalid-feedback">
+          Veuillez entrer votre ville, s'il vous plait.
+        </div>
     </div>
 
     <div class="form-group">
-          Date D'expiration:
-          <input type="text" class="form-control" id="expirationDate"/>
+          <label for="expirationDate">Date D'expiration:</label>
+          <input
+                type="text"
+                class="form-control"
+                id="expirationDate"
+                required>
+          <!-- NOT WORKING -->
+          <!-- <div class="invalid-feedback">
+            Veuillez entrer la date d'expiration de votre passeport, s'il vous plait.
+          </div> -->
     </div>
 
-    <script>
-        var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-        $('#expirationDate').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-            minDate: today,
-        });
-    </script>
-
-   <!-- TODO: Add a required tag -->
     <div class="form-group">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <input
+              class="form-check-input"
+              type="checkbox"
+              id="gridCheck"
+              required>
         <label class="form-check-label" for="gridCheck">
-          Confirmation
+          J'accepte que mes details soient afficher dans la list sur la page 'Etudiants'
         </label>
+        <div class="invalid-feedback">
+          Vous devez accepter avant de vous enregistrer.
+        </div>
       </div>
     </div>
     <div class="text-center">
@@ -65,12 +119,17 @@
     </div>
 
   </form>
-
 </div>
 
 
 <div class="container w-50 pt-4">
-<button type="button" class="btn btn-outline-success btn-sm btn-block" data-toggle="modal" data-target=".bd-modal-md">Le Savais Tu?</button>
+<button
+      type="button"
+      class="btn btn-outline-success btn-sm btn-block"
+      data-toggle="modal"
+      data-target=".bd-modal-md">
+      Le Savais Tu?
+    </button>
 </div>
 
 <div class="modal bd-modal-md" tabindex="-1" role="dialog">
@@ -83,12 +142,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <p class="text-justify"> Nous, etudiants congolais en Afrique du Sud, faisons face à un chalenge quand il s'agit de renouveler
-          nos passeports. Nous sommes obligés de repartir au pays pour le faire et cela pose un
-          vrai probleme pour plusieurs raisons. C'est pour cela que l'association des etudiants congolais en afrique
-          du Sud qui se chargent de plusieurs affaires nous concernant s'etaient plaints auprès de l'ambassadeur
-          concernant ce probleme. Et la solution avait été de recenser le nombre d'etudiants
-          comme ça ils pourront decider s'il faudra emmener la machine en afrique du sud...
+        <p class="text-justify">
+          Savez vous que les etudiants congolais etudiant en Afrique du Sud peuvent percevoir des bources du gouvernement?
+          Allez sour la page 'Nouvelles' pour plus de details.
         </p>
       </div>
       <div class="modal-footer">
@@ -98,4 +154,41 @@
   </div>
 </div>
 
+
+
+<script>
+
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
+<script>
+    var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+    $('#expirationDate').datepicker({
+        uiLibrary: 'bootstrap4',
+        iconsLibrary: 'fontawesome',
+        minDate: today,
+    });
+</script>
+
 {% endblock %}
+
+<!-- TODO:
+Fix validation with Date: it should not allow text to be input.
+Use the patter tag for regular expressions
+-->
