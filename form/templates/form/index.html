@@ -1,4 +1,5 @@
 {% extends 'website/base.html' %}
+{% load widget_tweaks %}
 
 {% block title %}Enregistrement{% endblock %}
 {% block content %}
@@ -13,110 +14,72 @@
       comme ça ils pourront décider s'il faudra avoir une machine en afrique du sud...</p>
 </div>
 
-<div class="container w-75">
 
+<div class="container w-75">
   <form class="needs-validation" action="{% url 'form:process_form' %}" method="post" novalidate>
   {% csrf_token %}
-    <div class="row form-group">
-        <div class="col">
-          <label for="inputSurname">Nom:</label>
-          <input
-                type="text"
-                maxlength="50"
-                class="form-control"
-                id="inputSurname"
-                placeholder="Nom"
-                required>
-          <div class="valid-feedback">
-            Génial!
-          </div>
-          <div class="invalid-feedback">
-            Veuillez entrer votre nom, s'il vous plait.
-          </div>
-        </div>
-        <div class="col">
-          <label for="inputName">Prenom:</label>
-          <input
-                type="text"
-                maxlength="50"
-                class="form-control"
-                id="inputName"
-                placeholder="Prenom"
-                required>
-          <div class="valid-feedback">
-            Génial!
-          </div>
-          <div class="invalid-feedback">
-            Veuillez entrer votre prenom, s'il vous plait.
-          </div>
-        </div>
+
+  <div class="row form-group">
+      <div class="col">
+        <label for="inputSurname">Nom:</label>
+          {% if form.is_bound %}
+            {% if form.surname.errors %}
+              {% render_field form.surname class="form-control is-invalid" maxlength="50" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
+
+              <div class="invalid-feedback">
+                Veuillez entrer votre nom, s'il vous plait.
+              </div>
+
+            {% else %}
+              {% render_field form.surname class="form-control is-valid" maxlength="50" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
+
+              <div class="valid-feedback">
+                Génial!
+              </div>
+
+            {% endif %}
+          {% else %}
+            {% render_field form.surname class="form-control" maxlength="50" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
+          {% endif %}
+
+          {% if form.surname.help_text %}
+            <small class="form-text text-muted">{{ form.surname.help_text }}</small>
+          {% endif %}
+
       </div>
 
-    <div class="form-group">
-      <label for="inputInstitution">Institution:</label>
-      <input
-            type="text"
-            maxlength="100"
-            class="form-control"
-            id="inputInstitution"
-            placeholder="Institution"
-            required>
-      <div class="valid-feedback">
-        Génial!
-      </div>
-      <div class="invalid-feedback">
-        Veuillez entrer votre institution, s'il vous plait.
+      <div class="col">
+        <label for="inputName">Prenom:</label>
+          {% if form.is_bound %}
+            {% if form.first_name.errors %}
+              {% render_field form.first_name class="form-control is-invalid" maxlength="50" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
+
+              <div class="invalid-feedback">
+                Veuillez entrer votre nom, s'il vous plait.
+              </div>
+
+            {% else %}
+              {% render_field form.first_name class="form-control is-valid" maxlength="50" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
+
+              <div class="valid-feedback">
+                Génial!
+              </div>
+
+            {% endif %}
+          {% else %}
+            {% render_field form.first_name class="form-control" maxlength="50" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
+          {% endif %}
+
+          {% if form.first_name.help_text %}
+            <small class="form-text text-muted">{{ form.first_name.help_text }}</small>
+          {% endif %}
+
       </div>
     </div>
 
-    <div class="form-group">
-        <label for="inputCity">Ville:</label>
-        <input
-              type="text"
-              maxlength="50"
-              class="form-control"
-              id="inputCity"
-              placeholder="Ville"
-              required>
-        <div class="valid-feedback">
-          Génial!
-        </div>
-        <div class="invalid-feedback">
-          Veuillez entrer votre ville, s'il vous plait.
-        </div>
-    </div>
-
-    <div class="form-group">
-          <label for="expirationDate">Date D'expiration:</label>
-          <input
-                type="text"
-                class="form-control"
-                id="expirationDate"
-                required>
-          <!-- NOT WORKING -->
-          <!-- <div class="invalid-feedback">
-            Veuillez entrer la date d'expiration de votre passeport, s'il vous plait.
-          </div> -->
-    </div>
-
-    <div class="form-group">
-      <div class="form-check">
-        <input
-              class="form-check-input"
-              type="checkbox"
-              id="gridCheck"
-              required>
-        <label class="form-check-label" for="gridCheck">
-          J'accepte que mes details soient afficher dans la list sur la page 'Etudiants'
-        </label>
-        <div class="invalid-feedback">
-          Vous devez accepter avant de vous enregistrer.
-        </div>
+      <div class="text-center">
+            <button type="submit" class="btn btn-success btn-sm">S'enregistrer</button>
       </div>
-    </div>
-    <div class="text-center">
-          <button type="submit" class="btn btn-success btn-sm">S'enregistrer</button>
-    </div>
 
   </form>
 </div>
