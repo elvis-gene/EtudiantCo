@@ -25,19 +25,17 @@
           {% if form.is_bound %}
             {% if form.surname.errors %}
               {% render_field form.surname class="form-control is-invalid" maxlength="50" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
-
               <div class="invalid-feedback">
                 Veuillez entrer votre nom, s'il vous plait.
               </div>
 
             {% else %}
               {% render_field form.surname class="form-control is-valid" maxlength="50" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
-
               <div class="valid-feedback">
                 Génial!
               </div>
-
             {% endif %}
+
           {% else %}
             {% render_field form.surname class="form-control" maxlength="50" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
           {% endif %}
@@ -53,26 +51,28 @@
           {% if form.is_bound %}
             {% if form.first_name.errors %}
               {% render_field form.first_name class="form-control is-invalid" maxlength="50" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
-
-              <div class="invalid-feedback">
+              <!-- <div class="invalid-feedback">
                 Veuillez entrer votre nom, s'il vous plait.
-              </div>
+              </div> -->
+
+              {% for error in form.first_name.errors %}
+                <div class="invalid-feedback">
+                  Veuillez entrer votre nom, s'il vous plait.
+                </div>
+              {% endfor %}
 
             {% else %}
               {% render_field form.first_name class="form-control is-valid" maxlength="50" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
-
               <div class="valid-feedback">
                 Génial!
               </div>
-
             {% endif %}
+
           {% else %}
             {% render_field form.first_name class="form-control" maxlength="50" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
           {% endif %}
 
-          {% if form.first_name.help_text %}
-            <small class="form-text text-muted">{{ form.first_name.help_text }}</small>
-          {% endif %}
+          <small class="form-text text-muted">Veuillez entrer votre nom, s'il vous plait.</small>
 
       </div>
     </div>
@@ -154,4 +154,5 @@
 <!-- TODO:
 Fix validation with Date: it should not allow text to be input.
 Use the patter tag for regular expressions
+
 -->
