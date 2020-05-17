@@ -15,9 +15,10 @@ provinces_list = (
 )
 
 class Student(models.Model):
-    first_name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50, help_text='Veuillez entrer votre numero de telephone.')
     surname = models.CharField(max_length=50)
     email = models.EmailField(max_length=254)
+    phone_number_country_code = PhoneNumberField()
     phone_number = PhoneNumberField()
     address = models.CharField(max_length=200)
     city = models.CharField(max_length=50)
@@ -30,7 +31,6 @@ class Student(models.Model):
 
     def __str__(self):
         return '{} {}'.format(self.surname, self.first_name)
-
 
 
 # No need to use this. Will use the Django built-in function

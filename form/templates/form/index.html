@@ -14,6 +14,8 @@
       comme ça ils pourront décider s'il faudra avoir une machine en afrique du sud...</p>
 </div>
 
+<!-- TODO:
+# Add form's help texts -->
 
 <div class="container w-75">
   <form class="needs-validation" action="{% url 'form:process_form' %}" method="post" novalidate>
@@ -22,18 +24,18 @@
   <div class="row form-group">
       <div class="col">
         <label for="inputSurname">Nom:</label>
-          {% if form.is_bound %}
+          {% if form.surname.is_bound %}
             {% if form.surname.errors %}
               {% render_field form.surname class="form-control is-invalid" maxlength="50" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
+
+              {% for error in form.surname.errors %}
               <div class="invalid-feedback">
-                Veuillez entrer votre nom, s'il vous plait.
+                {error}
               </div>
+              {% endfor %}
 
             {% else %}
               {% render_field form.surname class="form-control is-valid" maxlength="50" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
-              <div class="valid-feedback">
-                Génial!
-              </div>
             {% endif %}
 
           {% else %}
@@ -43,43 +45,112 @@
           {% if form.surname.help_text %}
             <small class="form-text text-muted">{{ form.surname.help_text }}</small>
           {% endif %}
-
       </div>
 
       <div class="col">
         <label for="inputName">Prenom:</label>
-          {% if form.is_bound %}
+          {% if form.first_name.is_bound %}
             {% if form.first_name.errors %}
               {% render_field form.first_name class="form-control is-invalid" maxlength="50" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
-              <!-- <div class="invalid-feedback">
-                Veuillez entrer votre nom, s'il vous plait.
-              </div> -->
 
               {% for error in form.first_name.errors %}
                 <div class="invalid-feedback">
-                  Veuillez entrer votre nom, s'il vous plait.
+                  {{error}}
                 </div>
               {% endfor %}
 
             {% else %}
               {% render_field form.first_name class="form-control is-valid" maxlength="50" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
-              <div class="valid-feedback">
-                Génial!
-              </div>
             {% endif %}
 
           {% else %}
             {% render_field form.first_name class="form-control" maxlength="50" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
           {% endif %}
 
-          <small class="form-text text-muted">Veuillez entrer votre nom, s'il vous plait.</small>
-
+          <!-- <small class="form-text text-muted">Veuillez entrer votre nom, s'il vous plait.</small> -->
       </div>
     </div>
 
-      <div class="text-center">
-            <button type="submit" class="btn btn-success btn-sm">S'enregistrer</button>
+    <div class="row form-group">
+      <div class="col">
+        <label for="inputPhoneNumber">Code:</label>
+        {% if form.phone_number_country_code.is_bound %}
+          {% if form.phone_number_country_code.errors %}
+            {% render_field form.phone_number_country_code class="form-control is-invalid" id="inputPhoneNumberCode" name="phonenumbercode" required="True" %}
+
+            {% for error in form.phone_number_country_code.errors %}
+            <div class="invalid-feedback">
+              {{error}}
+            </div>
+            {% endfor %}
+
+          {% else %}
+            {% render_field form.phone_number_country_code class="form-control is-valid" id="inputPhoneNumberCode" name="phonenumbercode" required="True" %}
+          {% endif %}
+
+        {% else %}
+          {% render_field form.phone_number_country_code class="form-control" id="inputPhoneNumberCode" name="phonenumbercode" required="True" %}
+        {% endif %}
+
+        {% if form.phone_number_country_code.help_text %}
+          <small class="form-text text-muted">{{ form.phone_number_country_code.help_text }}</small>
+        {% endif %}
       </div>
+
+      <div class="col">
+                <label for="inputPhoneNumber">Numero:</label>
+        {% if form.phone_number.is_bound %}
+          {% if form.phone_number.errors %}
+            {% render_field form.phone_number class="form-control is-invalid" id="inputPhoneNumber" name="phonenumber" required="True" %}
+
+            {% for error in form.phone_number.errors %}
+            <div class="invalid-feedback">
+              {{error}}
+            </div>
+            {% endfor %}
+
+          {% else %}
+            {% render_field form.phone_number class="form-control is-valid" id="inputPhoneNumber" name="phonenumber" required="True" %}
+          {% endif %}
+
+        {% else %}
+          {% render_field form.phone_number class="form-control" id="inputPhoneNumber" name="phonenumber" required="True" %}
+        {% endif %}
+
+        {% if form.phone_number.help_text %}
+          <small class="form-text text-muted">{{ form.phone_number.help_text }}</small>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputEmail">Email:</label>
+        {% if form.email.is_bound %}
+          {% if form.email.errors %}
+            {% render_field form.email class="form-control is-invalid" maxlength="254" id="inputEmail" placeholder="Email" name="email" required="True" %}
+
+            {% for error in form.email.errors %}
+            <div class="invalid-feedback">
+              {{error}}
+            </div>
+            {% endfor %}
+
+          {% else %}
+            {% render_field form.email class="form-control is-valid" maxlength="254" id="inputEmail" placeholder="Email" name="email" required="True" %}
+          {% endif %}
+
+        {% else %}
+          {% render_field form.email class="form-control" maxlength="254" id="inputEmail" placeholder="Email" name="email" required="True" %}
+        {% endif %}
+
+        {% if form.email.help_text %}
+          <small class="form-text text-muted">{{ form.email.help_text }}</small>
+        {% endif %}
+    </div>
+
+    <div class="text-center">
+          <button type="submit" class="btn btn-success btn-sm">S'enregistrer</button>
+    </div>
 
   </form>
 </div>
