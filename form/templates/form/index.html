@@ -26,7 +26,7 @@
         <label for="inputSurname">Nom:</label>
           {% if form.surname.is_bound %}
             {% if form.surname.errors %}
-              {% render_field form.surname class="form-control is-invalid" maxlength="50" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
+              {% render_field form.surname class="form-control is-invalid" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
 
               {% for error in form.surname.errors %}
               <div class="invalid-feedback">
@@ -35,11 +35,11 @@
               {% endfor %}
 
             {% else %}
-              {% render_field form.surname class="form-control is-valid" maxlength="50" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
+              {% render_field form.surname class="form-control is-valid" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
             {% endif %}
 
           {% else %}
-            {% render_field form.surname class="form-control" maxlength="50" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
+            {% render_field form.surname class="form-control" id="inputSurname" placeholder="Nom" name="surname" required="True" %}
           {% endif %}
 
           {% if form.surname.help_text %}
@@ -51,7 +51,7 @@
         <label for="inputName">Prenom:</label>
           {% if form.first_name.is_bound %}
             {% if form.first_name.errors %}
-              {% render_field form.first_name class="form-control is-invalid" maxlength="50" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
+              {% render_field form.first_name class="form-control is-invalid" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
 
               {% for error in form.first_name.errors %}
                 <div class="invalid-feedback">
@@ -60,74 +60,47 @@
               {% endfor %}
 
             {% else %}
-              {% render_field form.first_name class="form-control is-valid" maxlength="50" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
+              {% render_field form.first_name class="form-control is-valid" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
             {% endif %}
 
           {% else %}
-            {% render_field form.first_name class="form-control" maxlength="50" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
+            {% render_field form.first_name class="form-control" id="inputName" placeholder="Prenom" name="first_name" required="True" %}
           {% endif %}
 
           <!-- <small class="form-text text-muted">Veuillez entrer votre nom, s'il vous plait.</small> -->
       </div>
     </div>
 
-    <div class="row form-group">
-      <div class="col">
-        <label for="inputPhoneNumber">Code:</label>
-        {% if form.phone_number_country_code.is_bound %}
-          {% if form.phone_number_country_code.errors %}
-            {% render_field form.phone_number_country_code class="form-control is-invalid" id="inputPhoneNumberCode" name="phonenumbercode" required="True" %}
+    <div class="form-group">
+    <label for="inputPhoneNumber">Numero de Telephone:</label><br>
+      {% if form.phone_number.is_bound %}
+        {% if form.phone_number.errors %}
+          {% render_field form.phone_number class="form-control is-invalid" style="display: inline-block; width: 50%;" id="inputPhoneNumber" placeholder="123456789" name="phonenumber" required="True" %}
 
-            {% for error in form.phone_number_country_code.errors %}
-            <div class="invalid-feedback">
-              {{error}}
-            </div>
-            {% endfor %}
-
-          {% else %}
-            {% render_field form.phone_number_country_code class="form-control is-valid" id="inputPhoneNumberCode" name="phonenumbercode" required="True" %}
-          {% endif %}
+          {% for error in form.phone_number.errors %}
+          <div class="invalid-feedback">
+            {{error}}
+          </div>
+          {% endfor %}
 
         {% else %}
-          {% render_field form.phone_number_country_code class="form-control" id="inputPhoneNumberCode" name="phonenumbercode" required="True" %}
+          {% render_field form.phone_number class="form-control is-valid" style="display: inline-block; width: 50%;" id="inputPhoneNumber" placeholder="123456789" name="phonenumber" required="True" %}
         {% endif %}
 
-        {% if form.phone_number_country_code.help_text %}
-          <small class="form-text text-muted">{{ form.phone_number_country_code.help_text }}</small>
-        {% endif %}
-      </div>
+      {% else %}
+        {% render_field form.phone_number class="form-control" style="display: inline-block; width: 50%;" id="inputPhoneNumber" placeholder="123456789" name="phonenumber" required="True" %}
+      {% endif %}
 
-      <div class="col">
-                <label for="inputPhoneNumber">Numero:</label>
-        {% if form.phone_number.is_bound %}
-          {% if form.phone_number.errors %}
-            {% render_field form.phone_number class="form-control is-invalid" id="inputPhoneNumber" name="phonenumber" required="True" %}
-
-            {% for error in form.phone_number.errors %}
-            <div class="invalid-feedback">
-              {{error}}
-            </div>
-            {% endfor %}
-
-          {% else %}
-            {% render_field form.phone_number class="form-control is-valid" id="inputPhoneNumber" name="phonenumber" required="True" %}
-          {% endif %}
-
-        {% else %}
-          {% render_field form.phone_number class="form-control" id="inputPhoneNumber" name="phonenumber" required="True" %}
-        {% endif %}
-
-        {% if form.phone_number.help_text %}
-          <small class="form-text text-muted">{{ form.phone_number.help_text }}</small>
-        {% endif %}
-      </div>
+      {% if form.phone_number.help_text %}
+        <small class="form-text text-muted">{{ form.phone_number.help_text }}</small>
+      {% endif %}
     </div>
 
     <div class="form-group">
         <label for="inputEmail">Email:</label>
         {% if form.email.is_bound %}
           {% if form.email.errors %}
-            {% render_field form.email class="form-control is-invalid" maxlength="254" id="inputEmail" placeholder="Email" name="email" required="True" %}
+            {% render_field form.email class="form-control is-invalid" id="inputEmail" placeholder="Email" name="email" required="True" %}
 
             {% for error in form.email.errors %}
             <div class="invalid-feedback">
@@ -136,16 +109,180 @@
             {% endfor %}
 
           {% else %}
-            {% render_field form.email class="form-control is-valid" maxlength="254" id="inputEmail" placeholder="Email" name="email" required="True" %}
+            {% render_field form.email class="form-control is-valid"id="inputEmail" placeholder="Email" name="email" required="True" %}
           {% endif %}
 
         {% else %}
-          {% render_field form.email class="form-control" maxlength="254" id="inputEmail" placeholder="Email" name="email" required="True" %}
+          {% render_field form.email class="form-control" id="inputEmail" placeholder="Email" name="email" required="True" %}
         {% endif %}
 
         {% if form.email.help_text %}
           <small class="form-text text-muted">{{ form.email.help_text }}</small>
         {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label for="inputAddress">Addresse Physique:</label>
+        {% if form.address.is_bound %}
+          {% if form.address.errors %}
+            {% render_field form.address class="form-control is-invalid" id="inputAddress" placeholder="1234 Rue Principale" name="address" required="True" %}
+
+            {% for error in form.address.errors %}
+            <div class="invalid-feedback">
+              {{error}}
+            </div>
+            {% endfor %}
+
+          {% else %}
+            {% render_field form.address class="form-control is-valid" maxlength="254" id="inputAddress" placeholder="1234 Rue Principale" name="address" required="True" %}
+          {% endif %}
+
+        {% else %}
+          {% render_field form.address class="form-control" id="inputAddress" placeholder="1234 Rue Principale" name="address" required="True" %}
+        {% endif %}
+
+        {% if form.address.help_text %}
+          <small class="form-text text-muted">{{ form.address.help_text }}</small>
+        {% endif %}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Ville:</label>
+        {% if form.city.is_bound %}
+          {% if form.city.errors %}
+            {% render_field form.city class="form-control is-invalid" id="inputCity" placeholder="Ville" name="city" required="True" %}
+
+            {% for error in form.city.errors %}
+            <div class="invalid-feedback">
+              {{error}}
+            </div>
+            {% endfor %}
+
+          {% else %}
+            {% render_field form.city class="form-control is-valid" id="inputCity" placeholder="Ville" name="city" required="True" %}
+          {% endif %}
+
+        {% else %}
+          {% render_field form.city class="form-control" id="inputCity" placeholder="Ville" name="city" required="True" %}
+        {% endif %}
+
+        {% if form.city.help_text %}
+          <small class="form-text text-muted">{{ form.city.help_text }}</small>
+        {% endif %}
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputProvince">Province:</label>
+        {% if form.province.is_bound %}
+          {% if form.province.errors %}
+            {% render_field form.province class="form-control is-invalid" id="inputProvince" placeholder="Province" name="province" required="True" %}
+
+            {% for error in form.province.errors %}
+            <div class="invalid-feedback">
+              {{error}}
+            </div>
+            {% endfor %}
+
+          {% else %}
+            {% render_field form.province class="form-control is-valid" id="inputProvince" placeholder="Province" name="province" required="True" %}
+          {% endif %}
+
+        {% else %}
+          {% render_field form.province class="form-control" id="inputProvince" placeholder="Province" name="province" required="True" %}
+        {% endif %}
+
+        {% if form.province.help_text %}
+          <small class="form-text text-muted">{{ form.province.help_text }}</small>
+        {% endif %}
+      </div>
+
+      <div class="form-group col-md-2">
+        <label for="inputZipCode">Code Zip:</label>
+        {% if form.zip_code.is_bound %}
+          {% if form.zip_code.errors %}
+            {% render_field form.zip_code class="form-control is-invalid" id="inputZipCode" placeholder="0000" name="zip_code" required="True" %}
+
+            {% for error in form.zip_code.errors %}
+            <div class="invalid-feedback">
+              {{error}}
+            </div>
+            {% endfor %}
+
+          {% else %}
+            {% render_field form.zip_code class="form-control is-valid" id="inputZipCode" placeholder="0000" name="zip_code" required="True" %}
+          {% endif %}
+
+        {% else %}
+          {% render_field form.zip_code class="form-control" id="inputZipCode" placeholder="0000" name="zip_code" required="True" %}
+        {% endif %}
+
+        {% if form.zip_code.help_text %}
+          <small class="form-text text-muted">{{ form.zip_code.help_text }}</small>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputInstitution">Institution:</label>
+        {% if form.institution.is_bound %}
+          {% if form.institution.errors %}
+            {% render_field form.institution class="form-control is-invalid" id="inputInstitution" placeholder="Institution" name="institution" required="True" %}
+
+            {% for error in form.institution.errors %}
+            <div class="invalid-feedback">
+              {{error}}
+            </div>
+            {% endfor %}
+
+          {% else %}
+            {% render_field form.institution class="form-control is-valid" id="inputInstitution" placeholder="Institution" name="institution" required="True" %}
+          {% endif %}
+
+        {% else %}
+          {% render_field form.institution class="form-control" id="inputInstitution" placeholder="Institution" name="institution" required="True" %}
+        {% endif %}
+
+        {% if form.institution.help_text %}
+          <small class="form-text text-muted">{{ form.institution.help_text }}</small>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <label for="inputPasseportDate">Date D'expiration du Passeport:</label><br>
+        {% if form.visa_expiry_date.is_bound %}
+          {% if form.visa_expiry_date.errors %}
+            {% render_field form.visa_expiry_date class="form-control is-invalid" style="display: inline-block; width: 33.33%;" id="inputPasseportDate" placeholder="MM/JJ/AA" name="visa_expiry_date" required="True" %}
+
+            {% for error in form.visa_expiry_date.errors %}
+            <div class="invalid-feedback">
+              {{error}}
+            </div>
+            {% endfor %}
+
+          {% else %}
+            {% render_field form.visa_expiry_date class="form-control is-valid" style="display: inline-block; width: 33.33%;" id="inputPasseportDate" placeholder="MM/JJ/AA" name="visa_expiry_date" required="True" %}
+          {% endif %}
+
+        {% else %}
+          {% render_field form.visa_expiry_date class="form-control" style="display: inline-block; width: 33.33%;" id="inputPasseportDate" placeholder="MM/JJ/AA" name="visa_expiry_date" required="True" %}
+        {% endif %}
+
+        {% if form.visa_expiry_date.help_text %}
+          <small class="form-text text-muted">{{ form.visa_expiry_date.help_text }}</small>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" required>
+        <label class="form-check-label" for="gridCheck">
+          Confirmation
+        </label>
+        <div class="invalid-feedback">
+          Vous devez confirmer avant de vous enregistrer.
+        </div>
+      </div>
     </div>
 
     <div class="text-center">
@@ -211,19 +348,13 @@
 })();
 </script>
 
-<script>
+<!-- <script>
     var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
     $('#expirationDate').datepicker({
         uiLibrary: 'bootstrap4',
         iconsLibrary: 'fontawesome',
         minDate: today,
     });
-</script>
+</script> -->
 
 {% endblock %}
-
-<!-- TODO:
-Fix validation with Date: it should not allow text to be input.
-Use the patter tag for regular expressions
-
--->
