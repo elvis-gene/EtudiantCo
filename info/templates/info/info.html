@@ -1,0 +1,22 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block title %}Infomations{% endblock %}
+
+{% block content %}
+
+  <div class="container w-75 pt-4 pb-4 text-justify">
+    L'Ambassade de la République du Congo en République d'Afrique du sud informe
+    tous les étudiants congolais inscripts réguliérement dans les universités et
+    institus d'enseignement supérieur Sud-africains qu'ils peuvent postuler à une
+    opportunité de bourse qu'ils peuvent apercevoir chaque 3 mois tant ils étudient.
+    Pour plus d'informations, téléchargez le fichier dessous ou visiter le site de l'Ambassade.
+  </div>
+
+  <form action="{% static 'info/avis-aux-etudiants-rsa.pdf' %}">
+    {% csrf_token %}
+    <div class="text-center">
+          <button type="submit" class="btn btn-success btn-sm">Télécharger</button>
+    </div>
+  </form>
+
+{% endblock %}

@@ -3,5 +3,4 @@ from django.http import HttpResponse
 
 
 def news(request):
-    return HttpResponse('The template displaying some details')
-    # Just load an html template
+    return render(request, 'info/info.html')
