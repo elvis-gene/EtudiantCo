@@ -1,15 +1,82 @@
 {% extends 'website/base.html' %}
-{% block title %}Enregistrement{% endblock %}
+{% block title %}Liste d'étudiants{% endblock %}
 
+{% load form_extras %}
 {% block content %}
-  {% if len(students) != 0 %}
-    {% for student in students %}
 
-    <!-- Bootstrap grid -->
+
+  {% if students_count != 0 %}
+    <div class="container w-75 pt-4 pb-4 text-center">
+        <h3>Il y'a <i>{{students_count}}</i> etudiants enregistrés en ce moment.</h3>
+    </div>
+
+    <div class="container w-75">
+      <div class="row">
+        <div class="col-md-1">
+          #
+        </div>
+        <div class="col-md-4">
+          Nom & Prenom
+        </div>
+        <div class="col-md-2">
+          Institution
+        </div>
+        <div class="col-md-3">
+          Ville
+        </div>
+        <div class="col-md-2">
+          Expiration
+        </div>
+      </div>
+
+      <hr>
+    </div>
+
+    <div class="container w-75">
+      {% for student in students %}
+        {% if student|remainder_check %}
+          <div class="row bg-light">
+            <div class="col-md-1">
+              {{student.id}}
+            </div>
+            <div class="col-md-4">
+              {{student|get_fullname}}
+            </div>
+            <div class="col-md-2">
+              {{student.institution}}
+            </div>
+            <div class="col-md-3">
+              {{student.city}}
+            </div>
+            <div class="col-md-2">
+              {{student|date_formater}}
+            </div>
+          </div>
+        {% else %}
+          <div class="row">
+            <div class="col-md-1">
+              {{student.id}}
+            </div>
+            <div class="col-md-4">
+              {{student|get_fullname}}
+            </div>
+            <div class="col-md-2">
+              {{student.institution}}
+            </div>
+            <div class="col-md-3">
+              {{student.city}}
+            </div>
+            <div class="col-md-2">
+              {{student|date_formater}}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
 
   {% else %}
     <div class="container w-75 pt-4 text-justify">
-        <p>No students registered</p>
+        <p>Aucun etudiant s'est encore fait enregistré.</p>
     </div>
   {% endif %}
 

@@ -1,17 +1,15 @@
 from django.shortcuts import render, redirect
 from .models import Student
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.forms import modelform_factory
 from .models import Student
-from phonenumber_field.widgets import PhoneNumberPrefixWidget
+from phonenumber_field.widgets import PhoneNumberPrefixWidget, PhoneNumberInternationalFallbackWidget
 from django import forms
-from django.views.generic.edit import CreateView
+from django.urls import reverse
 
 
-# Use SelectateWidget
-# 'phone_number_country_code': PhonePrefixSelect(initial='ZA'),
 StudentForm = modelform_factory(Student, exclude=['total'],
-    widgets={'phone_number': PhoneNumberPrefixWidget(attrs={'pattern': '[0-9]+'}, initial='ZA'),
+    widgets={'phone_number': PhoneNumberInternationalFallbackWidget(region='ZA', attrs={'pattern': '[0-9]+'}),
              'province': forms.Select(),
              'visa_expiry_date': forms.SelectDateWidget()})
 
@@ -21,17 +19,11 @@ def home(request):
 
 
 def process_form(request):
-
     if request.method == 'POST':
         form = StudentForm(request.POST)
         if form.is_valid():
-            form.save() # Student is created here
-            # return redirect("") # Could redirect the user to the 'Etudiants' page
-            return HttpResponse("Merci pour l'enregistrement")
-
+            form.save() # StudentS is created here
+            return HttpResponseRedirect(reverse('students_list:get_list'))
     else:
         form = StudentForm()
     return render(request, 'form/index.html', {'form': form})
-
-# Another way to replace the two methods above is to use a 'CreateView'
-# Later not to allow someone to input date in the past

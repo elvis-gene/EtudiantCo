@@ -14,9 +14,6 @@
       comme ça ils pourront décider s'il faudra avoir une machine en afrique du sud...</p>
 </div>
 
-<!-- TODO:
-# Add form's help texts -->
-
 <div class="container w-75">
   <form class="needs-validation" action="{% url 'form:process_form' %}" method="post" novalidate>
   {% csrf_token %}
@@ -71,54 +68,56 @@
       </div>
     </div>
 
-    <div class="form-group">
-    <label for="inputPhoneNumber">Numero de Telephone:</label><br>
-      {% if form.phone_number.is_bound %}
-        {% if form.phone_number.errors %}
-          {% render_field form.phone_number class="form-control is-invalid" style="display: inline-block; width: 50%;" id="inputPhoneNumber" placeholder="123456789" name="phonenumber" required="True" %}
+    <div class="row form-group">
+        <div class="col">
+          <label for="inputEmail">Adresse Electronique:</label>
+          {% if form.email.is_bound %}
+            {% if form.email.errors %}
+              {% render_field form.email class="form-control is-invalid" id="inputEmail" placeholder="Adresse Electronique" name="email" required="True" %}
 
-          {% for error in form.phone_number.errors %}
-          <div class="invalid-feedback">
-            {{error}}
-          </div>
-          {% endfor %}
+              {% for error in form.email.errors %}
+              <div class="invalid-feedback">
+                {{error}}
+              </div>
+              {% endfor %}
 
-        {% else %}
-          {% render_field form.phone_number class="form-control is-valid" style="display: inline-block; width: 50%;" id="inputPhoneNumber" placeholder="123456789" name="phonenumber" required="True" %}
-        {% endif %}
+            {% else %}
+              {% render_field form.email class="form-control is-valid"id="inputEmail" placeholder="Adresse Electronique" name="email" required="True" %}
+            {% endif %}
 
-      {% else %}
-        {% render_field form.phone_number class="form-control" style="display: inline-block; width: 50%;" id="inputPhoneNumber" placeholder="123456789" name="phonenumber" required="True" %}
-      {% endif %}
+          {% else %}
+            {% render_field form.email class="form-control" id="inputEmail" placeholder="Adresse Electronique" name="email" required="True" %}
+          {% endif %}
 
-      {% if form.phone_number.help_text %}
-        <small class="form-text text-muted">{{ form.phone_number.help_text }}</small>
-      {% endif %}
-    </div>
+          {% if form.email.help_text %}
+            <small class="form-text text-muted">{{ form.email.help_text }}</small>
+          {% endif %}
+        </div>
 
-    <div class="form-group">
-        <label for="inputEmail">Email:</label>
-        {% if form.email.is_bound %}
-          {% if form.email.errors %}
-            {% render_field form.email class="form-control is-invalid" id="inputEmail" placeholder="Email" name="email" required="True" %}
+      <div class="col">
+      <label for="inputPhoneNumber">Numero de Telephone:</label><br>
+        {% if form.phone_number.is_bound %}
+          {% if form.phone_number.errors %}
+            {% render_field form.phone_number class="form-control is-invalid" id="inputPhoneNumber" placeholder="123456789" name="phonenumber" required="True" %}
 
-            {% for error in form.email.errors %}
+            {% for error in form.phone_number.errors %}
             <div class="invalid-feedback">
               {{error}}
             </div>
             {% endfor %}
 
           {% else %}
-            {% render_field form.email class="form-control is-valid"id="inputEmail" placeholder="Email" name="email" required="True" %}
+            {% render_field form.phone_number class="form-control is-valid" id="inputPhoneNumber" placeholder="123456789" name="phonenumber" required="True" %}
           {% endif %}
 
         {% else %}
-          {% render_field form.email class="form-control" id="inputEmail" placeholder="Email" name="email" required="True" %}
+          {% render_field form.phone_number class="form-control" id="inputPhoneNumber" placeholder="123456789" name="phonenumber" required="True" %}
         {% endif %}
 
-        {% if form.email.help_text %}
-          <small class="form-text text-muted">{{ form.email.help_text }}</small>
+        {% if form.phone_number.help_text %}
+          <small class="form-text text-muted">{{ form.phone_number.help_text }}</small>
         {% endif %}
+      </div>
     </div>
 
     <div class="form-group">
@@ -224,7 +223,7 @@
     </div>
 
     <div class="form-group">
-        <label for="inputInstitution">Institution:</label>
+        <label for="inputInstitution">Institution (Acronym):</label>
         {% if form.institution.is_bound %}
           {% if form.institution.errors %}
             {% render_field form.institution class="form-control is-invalid" id="inputInstitution" placeholder="Institution" name="institution" required="True" %}
@@ -346,14 +345,5 @@
   }, false);
 })();
 </script>
-
-<!-- <script>
-    var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-    $('#expirationDate').datepicker({
-        uiLibrary: 'bootstrap4',
-        iconsLibrary: 'fontawesome',
-        minDate: today,
-    });
-</script> -->
 
 {% endblock %}
