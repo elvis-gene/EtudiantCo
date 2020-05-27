@@ -4,27 +4,31 @@
 {% load form_extras %}
 {% block content %}
 
+<!-- TODO: Try 4 columns (excluding the id, if it doesn't look good on mobile) -->
+
 
   {% if students_count != 0 %}
-    <div class="container w-75 pt-4 pb-4 text-center">
+    <div class="container pt-4 pb-4 text-center">
         <h3>Il y'a <i>{{students_count}}</i> etudiants enregistrés en ce moment.</h3>
     </div>
 
-    <div class="container w-75">
-      <div class="row">
-        <div class="col-md-1">
+
+    <div class="container">
+      <div class="row row-cols-5">
+        <div class="col">
           #
         </div>
-        <div class="col-md-4">
+        <!-- #&emsp;&emsp;&emsp; -->
+        <div class="col">
           Nom & Prenom
         </div>
-        <div class="col-md-2">
+        <div class="col">
           Institution
         </div>
-        <div class="col-md-3">
+        <div class="col">
           Ville
         </div>
-        <div class="col-md-2">
+        <div class="col">
           Expiration
         </div>
       </div>
@@ -32,42 +36,45 @@
       <hr>
     </div>
 
-    <div class="container w-75">
+
+    <div class="container">
       {% for student in students %}
         {% if student|remainder_check %}
-          <div class="row bg-light">
-            <div class="col-md-1">
+          <div class="row row-cols-5 bg-light">
+            <div class="col">
               {{student.id}}
             </div>
-            <div class="col-md-4">
+            <!-- {{student|id_formatter}}&emsp; -->
+            <div class="col">
               {{student|get_fullname}}
             </div>
-            <div class="col-md-2">
+            <div class="col">
               {{student|capitalize_uni}}
             </div>
-            <div class="col-md-3">
+            <div class="col">
               {{student.city}}
             </div>
-            <div class="col-md-2">
-              {{student|date_formater}}
+            <div class="col">
+              {{student|date_formatter}}
             </div>
           </div>
         {% else %}
-          <div class="row">
-            <div class="col-md-1">
+          <div class="row row-cols-5">
+            <div class="col">
               {{student.id}}
             </div>
-            <div class="col-md-4">
+            <!-- {{student|id_formatter}}&emsp; -->
+            <div class="col">
               {{student|get_fullname}}
             </div>
-            <div class="col-md-2">
+            <div class="col">
               {{student|capitalize_uni}}
             </div>
-            <div class="col-md-3">
+            <div class="col">
               {{student.city}}
             </div>
-            <div class="col-md-2">
-              {{student|date_formater}}
+            <div class="col">
+              {{student|date_formatter}}
             </div>
           </div>
         {% endif %}

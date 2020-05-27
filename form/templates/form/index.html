@@ -31,7 +31,7 @@
   {% csrf_token %}
 
   <div class="row form-group">
-      <div class="col">
+      <div class="col-md-6 col-xs-12">
         <label for="inputSurname">Nom:</label>
           {% if form.surname.is_bound %}
             {% if form.surname.errors %}
@@ -56,7 +56,7 @@
           {% endif %}
       </div>
 
-      <div class="col">
+      <div class="col-md-6 col-xs-12">
         <label for="inputName">Prenom:</label>
           {% if form.first_name.is_bound %}
             {% if form.first_name.errors %}
@@ -81,7 +81,7 @@
     </div>
 
     <div class="row form-group">
-        <div class="col">
+        <div class="col-md-6 col-xs-12">
           <label for="inputEmail">Adresse Electronique:</label>
           {% if form.email.is_bound %}
             {% if form.email.errors %}
@@ -106,7 +106,7 @@
           {% endif %}
         </div>
 
-      <div class="col">
+      <div class="col-md-6 col-xs-12">
       <label for="inputPhoneNumber">Numero de Telephone:</label><br>
         {% if form.phone_number.is_bound %}
           {% if form.phone_number.errors %}

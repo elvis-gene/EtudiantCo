@@ -14,7 +14,7 @@ def remainder_check(student):
 
 
 @register.filter
-def date_formater(student):
+def date_formatter(student):
     date_input =  student.visa_expiry_date.strftime('%d %m %y')
     date = datetime.strptime(date_input, '%d %m %y')
     return date.strftime('%d-%m-%y')
@@ -23,3 +23,8 @@ def date_formater(student):
 @register.filter
 def capitalize_uni(student):
     return student.institution.upper()
+
+
+@register.filter
+def id_formatter(student):
+    return "{0:0=4d}".format(student.id)
