@@ -15,17 +15,17 @@
 
     <div class="container">
       <div class="row row-cols-5">
-        <div class="col">
+        <div class="col d-none d-md-block">
           #
         </div>
         <!-- #&emsp;&emsp;&emsp; -->
         <div class="col">
-          Nom & Prenom
+          Nom
         </div>
         <div class="col">
           Institution
         </div>
-        <div class="col">
+        <div class="col d-none d-md-block">
           Ville
         </div>
         <div class="col">
@@ -41,7 +41,7 @@
       {% for student in students %}
         {% if student|remainder_check %}
           <div class="row row-cols-5 bg-light">
-            <div class="col">
+            <div class="col d-none d-md-block">
               {{student.id}}
             </div>
             <!-- {{student|id_formatter}}&emsp; -->
@@ -51,7 +51,7 @@
             <div class="col">
               {{student|capitalize_uni}}
             </div>
-            <div class="col">
+            <div class="col d-none d-md-block">
               {{student.city}}
             </div>
             <div class="col">
@@ -60,7 +60,7 @@
           </div>
         {% else %}
           <div class="row row-cols-5">
-            <div class="col">
+            <div class="col d-none d-md-block">
               {{student.id}}
             </div>
             <!-- {{student|id_formatter}}&emsp; -->
@@ -70,7 +70,7 @@
             <div class="col">
               {{student|capitalize_uni}}
             </div>
-            <div class="col">
+            <div class="col d-none d-md-block">
               {{student.city}}
             </div>
             <div class="col">
