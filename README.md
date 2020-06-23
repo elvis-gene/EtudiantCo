@@ -1,4 +1,5 @@
 # EtudiantCo
+Django web app built for the association of Congolese students in South Africa.
 
 ## Technologies
 * Back-end: Django (Python)
