@@ -9,6 +9,6 @@ def get_list(request):
     return render(request, 'students_list/list.html',
                             {'students': students, 'students_count': students_count})
 
-
+# TODO:
 def expired_list(request):
     return HttpResponse('with expired passports')
