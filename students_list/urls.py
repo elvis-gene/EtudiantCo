@@ -5,6 +5,6 @@ app_name = 'students_list'
 urlpatterns = [
     # list
     path('', views.get_list, name='get_list'),
-    # list/expired
+    # TODO: list/expired
     path('list/expired/', views.expired_list, name='expired_list')
 ]
