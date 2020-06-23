@@ -22,7 +22,7 @@ def process_form(request):
     if request.method == 'POST':
         form = StudentForm(request.POST)
         if form.is_valid():
-            form.save() # StudentS is created here
+            form.save() # Students is created here
             return HttpResponseRedirect(reverse('students_list:get_list'))
     else:
         form = StudentForm()
