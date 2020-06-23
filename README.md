@@ -6,9 +6,9 @@
 * Front-end: Bootstrap
 
 ## Application Requirements
-asgiref==3.2.7
-Babel==2.8.0
-Django==3.0.5
+- asgiref==3.2.7
+- Babel==2.8.0
+- Django==3.0.5
 django-crispy-forms==1.9.0
 django-phonenumber-field==4.0.0
 django-recaptcha==2.0.6
