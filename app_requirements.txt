@@ -1,6 +1,6 @@
 asgiref==3.2.7
+Django==3.1.13
 Babel==2.9.1
-Django==3.1.6
 django-crispy-forms==1.9.0
 django-phonenumber-field==4.0.0
 django-recaptcha==2.0.6
