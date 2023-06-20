@@ -8,4 +8,4 @@ django-widget-tweaks==1.4.8
 phonenumbers==8.12.3
 psycopg2
 pytz==2019.3
-sqlparse==0.3.1
+sqlparse==0.4.4
